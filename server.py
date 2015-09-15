@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    records = db.psi.find().limit(20)
+    records = db.psi.find().sort("timestamp",-1).limit(20)
     obj = [json.dumps(r, sort_keys=True, indent=4, default=json_util.default) for r in records]
     res = "[" + ",".join(obj) + "]"
     return res
