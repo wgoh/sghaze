@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import threading, os
+import threading, os, sys
 
-def run_server():
+def run_server(target):
     print 'Started server..'
-    thread = threading.Thread(target = lambda: os.system('python server.py'))
+    thread = threading.Thread(target = lambda: os.system('python server.py ' + target))
     thread.start()
 
 def update():
@@ -14,5 +14,6 @@ def update():
     threading.Timer(5,update).start()
 
 if  __name__ == '__main__':
-    run_server()
+    target = sys.argv[1] if len(sys.argv) == 2 else ''
+    run_server(target)
     update()

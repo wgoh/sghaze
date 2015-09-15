@@ -6,8 +6,9 @@ from pymongo import MongoClient
 import json
 from bson import BSON
 from bson import json_util
+import argparse
 
-PORT = 5000
+PORT = 8000
 
 client = MongoClient()
 db = client.haze
@@ -22,7 +23,7 @@ def index():
     return res
 
 if __name__ == '__main__':
-    target = sys.argv[1]
+    target = sys.argv[1] if len(sys.argv) == 2 else ''
     if target == 'dev':
         app.run(debug=True,port=PORT)
     else:
