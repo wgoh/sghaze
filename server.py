@@ -2,6 +2,7 @@
 import os
 import sys
 from flask import Flask
+from flask.ext.cors import CORS
 from pymongo import MongoClient
 import json
 from bson import BSON
@@ -14,6 +15,7 @@ client = MongoClient()
 db = client.haze
 
 app = Flask(__name__)
+cors = CORS(app)
 
 @app.route('/')
 def index():
@@ -27,5 +29,5 @@ if __name__ == '__main__':
     if target == 'dev':
         app.run(debug=True,port=PORT)
     else:
-        app.run(debug=True, host='0.0.0.0',port=PORT)
+        app.run(host='0.0.0.0',port=PORT)
 
