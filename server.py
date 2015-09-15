@@ -8,7 +8,7 @@ from bson import BSON
 from bson import json_util
 import argparse
 
-PORT = 80
+PORT = 8000
 
 client = MongoClient()
 db = client.haze
