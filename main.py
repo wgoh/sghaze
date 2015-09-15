@@ -5,7 +5,7 @@ import threading, os, sys
 
 def serve_frontend():
     print 'Serving frontend..'
-    thread = threading.Thread(target = lambda: os.system('cd public/; python -m SimpleHTTPServer 3000' + target))
+    thread = threading.Thread(target = lambda: os.system('cd public/; python -m SimpleHTTPServer 80' + target))
     thread.start()
 
 def run_server(target):
