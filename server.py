@@ -7,6 +7,8 @@ import json
 from bson import BSON
 from bson import json_util
 
+PORT = 5000
+
 client = MongoClient()
 db = client.haze
 
@@ -20,4 +22,9 @@ def index():
     return res
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0',port=8000)
+    target = sys.argv[1]
+    if target == 'dev':
+        app.run(debug=True,port=PORT)
+    else:
+        app.run(debug=True, host='0.0.0.0',port=PORT)
+
