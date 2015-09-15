@@ -11,7 +11,7 @@ def run_server(target):
 def update():
     print 'Started PSI Daemon..'
     os.system("python scrape.py")
-    threading.Timer(5,update).start()
+    threading.Timer(60 * 15,update).start()
 
 if  __name__ == '__main__':
     target = sys.argv[1] if len(sys.argv) == 2 else ''
